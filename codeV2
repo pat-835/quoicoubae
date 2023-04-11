@@ -1,0 +1,66 @@
+import tkinter as tk
+
+# Création de la fenêtre principale
+root = tk.Tk()
+root.title("Ma fenêtre de jeu")
+root.geometry("400x400")  # dimensions de la fenêtre
+
+# Définition de la couleur de fond
+root.configure(bg="gray20")
+
+# Création des boutons
+button_play = tk.Button(root, text="Jouer", bg="gray40", fg="white", font=("Arial", 16))
+button_settings = tk.Button(root, text="Paramètres", bg="gray40", fg="white", font=("Arial", 16))
+button_online = tk.Button(root, text="En ligne", bg="gray40", fg="white", font=("Arial", 16))
+
+# Positionnement des boutons dans la fenêtre
+button_play.place(relx=0.5, rely=0.4, anchor="center")
+button_settings.place(relx=0.5, rely=0.5, anchor="center")
+button_online.place(relx=0.5, rely=0.6, anchor="center")
+
+# Fonction appelée lorsque le bouton Paramètres est cliqué
+def open_settings():
+    # Création de la nouvelle fenêtre de paramètres
+    settings_window = tk.Toplevel(root)
+    settings_window.title("Paramètres")
+    settings_window.geometry("300x200")
+
+    # Création des éléments de la fenêtre de paramètres
+    label_sound = tk.Label(settings_window, text="Volume du son", font=("Arial", 12))
+    label_sound.pack(pady=10)
+    slider_sound = tk.Scale(settings_window, from_=0, to=100, orient="horizontal")
+    slider_sound.pack(pady=10)
+    label_size = tk.Label(settings_window, text="Taille de la fenêtre", font=("Arial", 12))
+    label_size.pack(pady=10)
+    entry_width = tk.Entry(settings_window)
+    entry_width.pack(pady=5)
+    entry_height = tk.Entry(settings_window)
+    entry_height.pack(pady=5)
+    button_apply = tk.Button(settings_window, text="Appliquer", command=settings_window.destroy)
+    button_apply.pack(pady=10)
+
+# Fonction appelée lorsque le bouton Jouer est cliqué
+def play_game():
+    # Création de la fenêtre de jeu
+    game_window = tk.Toplevel(root)
+    game_window.title("Jeu")
+    game_window.geometry("400x400")
+
+    # Création des éléments de la fenêtre de jeu
+    label_welcome = tk.Label(game_window, text="Bienvenue !", font=("Arial", 20))
+    label_welcome.pack(pady=50)
+    # Ici, vous pouvez ajouter du code pour créer votre jeu.
+
+    # Fonction pour faire disparaître l'étiquette Bienvenue après quelques secondes
+    def hide_label():
+        label_welcome.destroy()
+
+    # Animation pour faire disparaître l'étiquette Bienvenue
+    label_welcome.after(2000, hide_label)
+
+# Liaison des fonctions aux boutons
+button_settings.config(command=open_settings)
+button_play.config(command=play_game)
+
+# Boucle principale
+root.mainloop()
