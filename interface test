@@ -1,0 +1,40 @@
+import tkinter as tk
+
+class GameInterface:
+    def __init__(self, master):
+        self.master = master
+        master.title("Choisissez votre personnage")
+
+        self.canvas = tk.Canvas(master, width=600, height=400)
+        self.canvas.pack()
+
+        self.label = tk.Label(master, text="Choisissez votre personnage:")
+        self.label.pack()
+
+        # Images des personnages
+        self.char1_img = tk.PhotoImage(file="path/to/char1.png")
+        self.char2_img = tk.PhotoImage(file="path/to/char2.png")
+        self.char3_img = tk.PhotoImage(file="path/to/char3.png")
+
+        # Boutons pour sélectionner les personnages
+        self.char1_button = tk.Button(master, image=self.char1_img, command=self.char1)
+        self.char1_button.pack(side=tk.LEFT, padx=20)
+
+        self.char2_button = tk.Button(master, image=self.char2_img, command=self.char2)
+        self.char2_button.pack(side=tk.LEFT, padx=20)
+
+        self.char3_button = tk.Button(master, image=self.char3_img, command=self.char3)
+        self.char3_button.pack(side=tk.LEFT, padx=20)
+
+    def char1(self):
+        # Code pour sélectionner le personnage 1 et lancer le jeu
+
+    def char2(self):
+        # Code pour sélectionner le personnage 2 et lancer le jeu
+
+    def char3(self):
+        # Code pour sélectionner le personnage 3 et lancer le jeu
+
+root = tk.Tk()
+my_game = GameInterface(root)
+root.mainloop()
