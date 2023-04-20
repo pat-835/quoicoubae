@@ -1,0 +1,21 @@
+import tkinter as tk
+
+def ouvrir_parametres():
+    # Créer une nouvelle fenêtre pour les paramètres
+    fenetre_parametres = tk.Toplevel(root)
+
+    # Ajouter des éléments à la fenêtre pour les options de réglage
+    # par exemple, un curseur pour le volume du jeu et un champ de texte pour la taille de la page
+    volume = tk.Scale(fenetre_parametres, from_=0, to=100, label="Volume")
+    taille_page = tk.Entry(fenetre_parametres)
+
+    # Afficher les éléments
+    volume.pack()
+    taille_page.pack()
+
+root = tk.Tk()
+
+bouton_parametres = tk.Button(root, text="Paramètres", command=ouvrir_parametres)
+bouton_parametres.pack()
+
+root.mainloop()
